@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/game_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const BubblePopApp());
@@ -21,7 +21,7 @@ class BubblePopApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFF1A0033),
       ),
-      home: const GameScreen(),
+      home: const HomeScreen(),
     );
   }
 }

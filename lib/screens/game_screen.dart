@@ -158,31 +158,25 @@ class _GameScreenState extends State<GameScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.4),
+                border: const Border(bottom: BorderSide(color: Colors.white12)),
+              ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ShaderMask(
-                    shaderCallback: (r) => const LinearGradient(
-                      colors: [Color(0xFFFF4081), Color(0xFF7C4DFF)],
-                    ).createShader(r),
-                    child: const Text('BUBBLE POP',
-                        style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                            letterSpacing: 4)),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    iconSize: 22,
+                    padding: const EdgeInsets.all(4),
+                    constraints: const BoxConstraints(),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                  Row(
-                    children: [
-                      _stat('SCOR', '$_score'),
-                      const SizedBox(width: 12),
-                      _stat('TOP', '$_high'),
-                      const SizedBox(width: 12),
-                      _stat('VIEȚI', '${5 - _missed}'),
-                    ],
-                  ),
+                  const SizedBox(width: 8),
+                  Expanded(child: _stat('SCOR', '$_score')),
+                  Expanded(child: _stat('TOP', '$_high')),
+                  Expanded(child: _stat('VIEȚI', '${5 - _missed}')),
                 ],
               ),
             ),
@@ -270,8 +264,9 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget _stat(String label, String value) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white60, fontSize: 10, fontWeight: FontWeight.w700)),
+        Text(label, style: const TextStyle(color: Colors.white60, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1)),
         Text(value, style: const TextStyle(color: Color(0xFFFF4081), fontSize: 18, fontWeight: FontWeight.w900)),
       ],
     );
