@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'purchase_service.dart';
 
 class AdsService {
   AdsService._();
@@ -70,6 +71,7 @@ class AdsService {
 
   void maybeShowInterstitial() {
     if (!_initialized) return;
+    if (PurchaseService.instance.noAds) return;
     final ad = _interstitial;
     if (ad == null) {
       _loadInterstitial();

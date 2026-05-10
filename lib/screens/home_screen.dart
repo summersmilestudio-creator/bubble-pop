@@ -6,6 +6,7 @@ import '../widgets/daily_reward_screen.dart';
 import 'achievements_screen.dart';
 import 'game_screen.dart';
 import 'settings_screen.dart';
+import 'shop_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,6 +82,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           icon: const Icon(Icons.emoji_events, color: Color(0xFFFFCA28)),
                           onPressed: () => Navigator.push(context,
                               MaterialPageRoute(builder: (_) => const AchievementsScreen())),
+                        ),
+                        IconButton(
+                          tooltip: 'Magazin',
+                          icon: const Icon(Icons.shopping_bag, color: Color(0xFFFF4081)),
+                          onPressed: () async {
+                            await Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => const ShopScreen()));
+                            _load();
+                          },
                         ),
                       ],
                     ),

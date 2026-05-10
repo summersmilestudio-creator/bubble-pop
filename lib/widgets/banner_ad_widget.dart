@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../services/ads_service.dart';
+import '../services/purchase_service.dart';
 
 class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({super.key});
@@ -15,7 +16,15 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void initState() {
     super.initState();
-    _load();
+    if (!PurchaseService.instance.noAds) _load();
+    PurchaseService.instance.noAdsNotifier.addListener(_onNoAds);
+  }
+
+  void _onNoAds() {
+    if (PurchaseService.instance.noAds && _ad != null) {
+      _ad!.dispose();
+      if (mounted) setState(() => _ad = null);
+    }
   }
 
   void _load() {
@@ -34,11 +43,13 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void dispose() {
     _ad?.dispose();
+    PurchaseService.instance.noAdsNotifier.removeListener(_onNoAds);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (PurchaseService.instance.noAds) return const SizedBox.shrink();
     if (_ad == null) return const SizedBox(height: 50);
     return SizedBox(
       width: _ad!.size.width.toDouble(),

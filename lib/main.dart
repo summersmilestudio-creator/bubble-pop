@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'services/ads_service.dart';
+import 'services/purchase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await PurchaseService.instance.initialize();
   await AdsService.instance.initialize();
   runApp(const BubblePopApp());
 }
