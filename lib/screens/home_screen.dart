@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/rewards_service.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/daily_reward_screen.dart';
+import 'achievements_screen.dart';
 import 'game_screen.dart';
 import 'settings_screen.dart';
 
@@ -47,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BannerAdWidget(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -63,13 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.settings, color: Colors.white),
-                      onPressed: () async {
-                        await Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const SettingsScreen()));
-                        _load();
-                      },
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.settings, color: Colors.white),
+                          onPressed: () async {
+                            await Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => const SettingsScreen()));
+                            _load();
+                          },
+                        ),
+                        IconButton(
+                          tooltip: 'Realizări',
+                          icon: const Icon(Icons.emoji_events, color: Color(0xFFFFCA28)),
+                          onPressed: () => Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const AchievementsScreen())),
+                        ),
+                      ],
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../services/achievements_service.dart';
+import '../services/ads_service.dart';
+import '../widgets/banner_ad_widget.dart';
 
 const _bubbleColors = [
   Color(0xFFFF4081),
@@ -44,6 +47,8 @@ class _GameScreenState extends State<GameScreen> {
   int _missed = 0;
   bool _running = false;
   final _rng = Random();
+  int _comboCount = 0;
+  DateTime _lastPopAt = DateTime.fromMillisecondsSinceEpoch(0);
 
   @override
   void initState() {
@@ -80,6 +85,42 @@ class _GameScreenState extends State<GameScreen> {
     _moveTimer?.cancel();
     _running = false;
     _saveHigh();
+    AchievementsService.instance.recordGameEnd(score: _score).then(_showUnlockToasts);
+    AdsService.instance.maybeShowInterstitial();
+  }
+
+  void _showUnlockToasts(List<Achievement> unlocked) {
+    if (unlocked.isEmpty || !mounted) return;
+    for (var i = 0; i < unlocked.length; i++) {
+      final a = unlocked[i];
+      Future.delayed(Duration(milliseconds: 200 + i * 1500), () {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: a.color,
+            duration: const Duration(milliseconds: 2200),
+            content: Row(
+              children: [
+                Icon(a.icon, color: Colors.white),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text('🏆 Realizare deblocată',
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 12)),
+                      Text(a.title,
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 15)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+    }
   }
 
   void _spawn() {
@@ -138,11 +179,19 @@ class _GameScreenState extends State<GameScreen> {
     final b = _bubbles[idx];
     if (b.popped) return;
     HapticFeedback.lightImpact();
+    final now = DateTime.now();
+    if (now.difference(_lastPopAt) < const Duration(seconds: 2)) {
+      _comboCount++;
+    } else {
+      _comboCount = 1;
+    }
+    _lastPopAt = now;
     setState(() {
       b.popped = true;
       _score += (50 - b.radius).round().clamp(10, 50);
     });
     _saveHigh();
+    AchievementsService.instance.recordPop(currentCombo: _comboCount).then(_showUnlockToasts);
   }
 
   @override
@@ -155,6 +204,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BannerAdWidget(),
       body: SafeArea(
         child: Column(
           children: [
