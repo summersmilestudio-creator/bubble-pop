@@ -1,7 +1,7 @@
 name: bubble_pop
 description: "Bubble Pop — sparge bulele colorate cu tap"
 publish_to: 'none'
-version: 1.2.0+8
+version: 1.2.1+9
 environment:
   sdk: ^3.11.1
 

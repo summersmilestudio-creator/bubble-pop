@@ -16,12 +16,12 @@ class PurchaseService {
   PurchaseService._();
   static final PurchaseService instance = PurchaseService._();
 
-  static const String noAdsId = 'bp_noads';
+  static const String noAdsId = 'noads_bubble';
   static const List<CoinPack> coinPacks = [
-    CoinPack('bp_coins_500', 500, 0),
-    CoinPack('bp_coins_1500', 1500, 200),
-    CoinPack('bp_coins_5000', 5000, 1000),
-    CoinPack('bp_coins_15000', 15000, 5000),
+    CoinPack('coins_500_bubble', 500, 0),
+    CoinPack('coins_1500_bubble', 1500, 200),
+    CoinPack('coins_5000_bubble', 5000, 1000),
+    CoinPack('coins_15000_bubble', 15000, 5000),
   ];
 
   static const _kNoAdsKey = 'bp_no_ads';
