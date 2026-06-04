@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/achievements_service.dart';
 import '../services/ads_service.dart';
 import '../widgets/banner_ad_widget.dart';
+import 'achievements_screen.dart' show achievementTitle;
 
 const _bubbleColors = [
   Color(0xFFFF4081),
@@ -145,7 +147,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     });
     if (!earned && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Reclama nu e disponibilă acum.')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.adNotAvailable)),
       );
     }
   }
@@ -179,21 +181,22 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
 
   void _showGameOverDialog() {
     if (!mounted) return;
+    final l = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (c) => StatefulBuilder(
         builder: (c, setLocal) => AlertDialog(
-          title: const Text('Game Over'),
+          title: Text(l.gameOver),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Scor: $_score${_score == _high ? "\n🏆 Record!" : ""}',
+              Text('${l.scoreResult(_score)}${_score == _high ? "\n${l.newRecord}" : ""}',
                   textAlign: TextAlign.center),
               const SizedBox(height: 12),
-              const Text(
-                'O viață revine la fiecare 3 minute în timpul jocului.',
-                style: TextStyle(fontSize: 12, color: Colors.black54),
+              Text(
+                l.lifeRegenHint,
+                style: const TextStyle(fontSize: 12, color: Colors.black54),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -206,7 +209,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       Navigator.pop(c);
                       _start();
                     },
-              child: const Text('Joc nou'),
+              child: Text(l.playAgain),
             ),
             ElevatedButton.icon(
               onPressed: _reviveBusy
@@ -222,8 +225,8 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       } else {
                         setLocal(() {});
                         ScaffoldMessenger.of(c).showSnackBar(
-                          const SnackBar(
-                            content: Text('Reclama nu e disponibilă acum.'),
+                          SnackBar(
+                            content: Text(l.adNotAvailable),
                           ),
                         );
                       }
@@ -234,7 +237,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : const Icon(Icons.favorite),
-              label: const Text('+1 viață (reclamă)'),
+              label: Text(l.reviveWithAd),
             ),
           ],
         ),
@@ -244,6 +247,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
 
   void _showUnlockToasts(List<Achievement> unlocked) {
     if (unlocked.isEmpty || !mounted) return;
+    final l = AppLocalizations.of(context)!;
     for (var i = 0; i < unlocked.length; i++) {
       final a = unlocked[i];
       Future.delayed(Duration(milliseconds: 200 + i * 1500), () {
@@ -261,9 +265,9 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text('🏆 Realizare deblocată',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 12)),
-                      Text(a.title,
+                      Text(l.achievementUnlocked,
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 12)),
+                      Text(achievementTitle(l, a.id),
                           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 15)),
                     ],
                   ),
@@ -359,6 +363,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       bottomNavigationBar: const BannerAdWidget(),
       body: SafeArea(
@@ -380,13 +385,13 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                     onPressed: () => Navigator.pop(context),
                   ),
                   const SizedBox(width: 8),
-                  Expanded(child: _stat('SCOR', '$_score')),
-                  Expanded(child: _stat('TOP', '$_high')),
-                  Expanded(child: _stat('VIEȚI', '${_maxLives - _missed}')),
-                  Expanded(child: _stat('NIVEL', '${_difficultyLevel + 1}')),
+                  Expanded(child: _stat(l.statScore, '$_score')),
+                  Expanded(child: _stat(l.statTop, '$_high')),
+                  Expanded(child: _stat(l.statLives, '${_maxLives - _missed}')),
+                  Expanded(child: _stat(l.statLevel, '${_difficultyLevel + 1}')),
                   if (_running && _missed >= 2)
                     IconButton(
-                      tooltip: '❤️ Refill vieți (reclamă)',
+                      tooltip: l.refillLivesTooltip,
                       iconSize: 22,
                       padding: const EdgeInsets.all(4),
                       constraints: const BoxConstraints(),
@@ -464,10 +469,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                             ),
                           ),
                       if (_isPaused && _running)
-                        const Center(
+                        Center(
                           child: Text(
-                            '⏸  Pauză',
-                            style: TextStyle(
+                            l.paused,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24,
                               fontWeight: FontWeight.w900,
@@ -484,7 +489,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                               textStyle: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
                             ),
                             onPressed: _start,
-                            child: const Text('START'),
+                            child: Text(l.start),
                           ),
                         ),
                     ],

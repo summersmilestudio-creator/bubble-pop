@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/rewards_service.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -27,10 +28,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF1A0033),
       appBar: AppBar(
-        title: const Text('Setări'),
+        title: Text(l.settingsTitle),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
       ),
@@ -40,9 +42,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             SwitchListTile(
               activeColor: const Color(0xFFFF4081),
-              title: const Text('Sunet', style: TextStyle(color: Colors.white)),
-              subtitle: const Text('Efecte sonore în joc',
-                  style: TextStyle(color: Colors.white60)),
+              title: Text(l.sound, style: const TextStyle(color: Colors.white)),
+              subtitle: Text(l.soundSubtitle,
+                  style: const TextStyle(color: Colors.white60)),
               value: _sound,
               onChanged: (v) async {
                 await _settings.setSound(v);
@@ -52,9 +54,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             SwitchListTile(
               activeColor: const Color(0xFFFF4081),
-              title: const Text('Vibrații', style: TextStyle(color: Colors.white)),
-              subtitle: const Text('Haptic feedback la atingere',
-                  style: TextStyle(color: Colors.white60)),
+              title: Text(l.vibration, style: const TextStyle(color: Colors.white)),
+              subtitle: Text(l.vibrationSubtitle,
+                  style: const TextStyle(color: Colors.white60)),
               value: _haptic,
               onChanged: (v) async {
                 await _settings.setHaptic(v);
@@ -63,15 +65,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               secondary: const Icon(Icons.vibration, color: Color(0xFFFF4081)),
             ),
             const Divider(color: Colors.white24),
-            const ListTile(
-              leading: Icon(Icons.info_outline, color: Colors.white60),
-              title: Text('Versiune', style: TextStyle(color: Colors.white)),
-              subtitle: Text('1.1.0', style: TextStyle(color: Colors.white60)),
+            ListTile(
+              leading: const Icon(Icons.info_outline, color: Colors.white60),
+              title: Text(l.version, style: const TextStyle(color: Colors.white)),
+              subtitle: const Text('1.1.0', style: TextStyle(color: Colors.white60)),
             ),
-            const ListTile(
-              leading: Icon(Icons.business, color: Colors.white60),
-              title: Text('Publisher', style: TextStyle(color: Colors.white)),
-              subtitle: Text('Summer Smile SRL', style: TextStyle(color: Colors.white60)),
+            ListTile(
+              leading: const Icon(Icons.business, color: Colors.white60),
+              title: Text(l.publisher, style: const TextStyle(color: Colors.white)),
+              subtitle: const Text('Summer Smile SRL', style: TextStyle(color: Colors.white60)),
             ),
           ],
         ),

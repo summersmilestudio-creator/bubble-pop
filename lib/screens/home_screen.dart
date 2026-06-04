@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/rewards_service.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../widgets/daily_reward_screen.dart';
@@ -49,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       bottomNavigationBar: const BannerAdWidget(),
       body: Container(
@@ -78,13 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                         IconButton(
-                          tooltip: 'Realizări',
+                          tooltip: l.tooltipAchievements,
                           icon: const Icon(Icons.emoji_events, color: Color(0xFFFFCA28)),
                           onPressed: () => Navigator.push(context,
                               MaterialPageRoute(builder: (_) => const AchievementsScreen())),
                         ),
                         IconButton(
-                          tooltip: 'Magazin',
+                          tooltip: l.tooltipShop,
                           icon: const Icon(Icons.shopping_bag, color: Color(0xFFFF4081)),
                           onPressed: () async {
                             await Navigator.push(context,
@@ -153,8 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Column(
                     children: [
-                      const Text('TOP SCORE',
-                          style: TextStyle(color: Colors.white60, fontSize: 12, letterSpacing: 2)),
+                      Text(l.topScore,
+                          style: const TextStyle(color: Colors.white60, fontSize: 12, letterSpacing: 2)),
                       const SizedBox(height: 6),
                       Text('$_highScore',
                           style: const TextStyle(
@@ -182,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(builder: (_) => const GameScreen()));
                       _load();
                     },
-                    child: const Text('JOC NOU'),
+                    child: Text(l.newGame),
                   ),
                 ),
                 const SizedBox(height: 60),

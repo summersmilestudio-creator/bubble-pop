@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/purchase_service.dart';
 import '../widgets/banner_ad_widget.dart';
 
@@ -21,7 +22,7 @@ class _ShopScreenState extends State<ShopScreen> {
       setState(() => _busy = false);
       if (!ok) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Magazinul nu este disponibil acum.')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.shopUnavailableNow)),
         );
       }
     }
@@ -29,6 +30,7 @@ class _ShopScreenState extends State<ShopScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final svc = PurchaseService.instance;
     final noAdsProduct = svc.productFor(PurchaseService.noAdsId);
     final coinProducts = svc.coinProducts;
@@ -36,13 +38,13 @@ class _ShopScreenState extends State<ShopScreen> {
       bottomNavigationBar: const BannerAdWidget(),
       backgroundColor: const Color(0xFF1A0033),
       appBar: AppBar(
-        title: const Text('Magazin'),
+        title: Text(l.shopTitle),
         backgroundColor: Colors.black54,
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
           IconButton(
-            tooltip: 'Restaurează cumpărăturile',
+            tooltip: l.restorePurchases,
             icon: const Icon(Icons.restore),
             onPressed: svc.restore,
           ),
@@ -79,9 +81,9 @@ class _ShopScreenState extends State<ShopScreen> {
                             Icon(noAds ? Icons.check_circle : Icons.block,
                                 color: Colors.white, size: 32),
                             const SizedBox(width: 12),
-                            const Expanded(
-                              child: Text('Fără reclame',
-                                  style: TextStyle(
+                            Expanded(
+                              child: Text(l.removeAds,
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 22,
                                       fontWeight: FontWeight.w900)),
@@ -90,9 +92,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          noAds
-                              ? 'Achiziționat — bucură-te de joc fără reclame!'
-                              : 'Elimină banner-ele și reclamele între nivele permanent.',
+                          noAds ? l.removeAdsOwned : l.removeAdsDescription,
                           style: const TextStyle(color: Colors.white, fontSize: 13),
                         ),
                         const SizedBox(height: 12),
@@ -109,7 +109,7 @@ class _ShopScreenState extends State<ShopScreen> {
                               onPressed: noAdsProduct == null || _busy
                                   ? null
                                   : () => _buy(PurchaseService.noAdsId),
-                              child: Text(noAdsProduct?.price ?? 'Indisponibil'),
+                              child: Text(noAdsProduct?.price ?? l.unavailable),
                             ),
                           ),
                       ],
@@ -118,10 +118,10 @@ class _ShopScreenState extends State<ShopScreen> {
                 },
               ),
               const SizedBox(height: 24),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
-                child: Text('PACHETE MONEDE',
-                    style: TextStyle(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text(l.coinPacks,
+                    style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 14,
                         fontWeight: FontWeight.w800,
@@ -129,22 +129,22 @@ class _ShopScreenState extends State<ShopScreen> {
               ),
               const SizedBox(height: 12),
               if (coinProducts.isEmpty && svc.available)
-                const Padding(
-                  padding: EdgeInsets.all(20),
+                Padding(
+                  padding: const EdgeInsets.all(20),
                   child: Center(
-                    child: Text('Se încarcă...', style: TextStyle(color: Colors.white60)),
+                    child: Text(l.loading, style: const TextStyle(color: Colors.white60)),
                   ),
                 ),
               if (!svc.available)
-                const Padding(
-                  padding: EdgeInsets.all(20),
+                Padding(
+                  padding: const EdgeInsets.all(20),
                   child: Center(
-                    child: Text('Magazin indisponibil',
-                        style: TextStyle(color: Colors.white60)),
+                    child: Text(l.shopUnavailable,
+                        style: const TextStyle(color: Colors.white60)),
                   ),
                 ),
               for (final pack in PurchaseService.coinPacks)
-                _coinTile(pack, svc.productFor(pack.id)),
+                _coinTile(context, pack, svc.productFor(pack.id)),
             ],
           ),
         ),
@@ -152,7 +152,8 @@ class _ShopScreenState extends State<ShopScreen> {
     );
   }
 
-  Widget _coinTile(CoinPack pack, ProductDetails? product) {
+  Widget _coinTile(BuildContext context, CoinPack pack, ProductDetails? product) {
+    final l = AppLocalizations.of(context)!;
     final available = product != null && PurchaseService.instance.available;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -181,11 +182,11 @@ class _ShopScreenState extends State<ShopScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${pack.coins} monede',
+                  Text(l.coinsAmount(pack.coins),
                       style: const TextStyle(
                           color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900)),
                   if (pack.bonus > 0)
-                    Text('+ ${pack.bonus} BONUS',
+                    Text(l.bonusAmount(pack.bonus),
                         style: const TextStyle(
                             color: Color(0xFFFFCA28), fontSize: 12, fontWeight: FontWeight.w800)),
                 ],
@@ -199,7 +200,7 @@ class _ShopScreenState extends State<ShopScreen> {
                 textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
               ),
               onPressed: !available || _busy ? null : () => _buy(pack.id),
-              child: Text(product?.price ?? 'N/A'),
+              child: Text(product?.price ?? l.priceUnavailable),
             ),
           ],
         ),

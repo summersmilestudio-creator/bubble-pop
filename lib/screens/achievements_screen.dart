@@ -1,6 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/achievements_service.dart';
 import '../widgets/banner_ad_widget.dart';
+
+/// Localized title for an achievement, keyed on its stable id.
+String achievementTitle(AppLocalizations l, String id) {
+  switch (id) {
+    case 'first_pop':
+      return l.achFirstPopTitle;
+    case 'pop_50':
+      return l.achPop50Title;
+    case 'pop_500':
+      return l.achPop500Title;
+    case 'pop_2000':
+      return l.achPop2000Title;
+    case 'score_500':
+      return l.achScore500Title;
+    case 'score_2000':
+      return l.achScore2000Title;
+    case 'combo_5':
+      return l.achCombo5Title;
+    case 'games_25':
+      return l.achGames25Title;
+  }
+  return id;
+}
+
+/// Localized description for an achievement, keyed on its stable id.
+String achievementDescription(AppLocalizations l, String id) {
+  switch (id) {
+    case 'first_pop':
+      return l.achFirstPopDesc;
+    case 'pop_50':
+      return l.achPop50Desc;
+    case 'pop_500':
+      return l.achPop500Desc;
+    case 'pop_2000':
+      return l.achPop2000Desc;
+    case 'score_500':
+      return l.achScore500Desc;
+    case 'score_2000':
+      return l.achScore2000Desc;
+    case 'combo_5':
+      return l.achCombo5Desc;
+    case 'games_25':
+      return l.achGames25Desc;
+  }
+  return '';
+}
 
 class AchievementsScreen extends StatefulWidget {
   const AchievementsScreen({super.key});
@@ -35,13 +82,14 @@ class _AchievementsScreenState extends State<AchievementsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final all = AchievementsService.all;
     final unlockedCount = all.where((a) => _unlocked.contains(a.id)).length;
     return Scaffold(
       bottomNavigationBar: const BannerAdWidget(),
       backgroundColor: const Color(0xFF1A0033),
       appBar: AppBar(
-        title: const Text('Realizări'),
+        title: Text(l.achievementsTitle),
         backgroundColor: Colors.black54,
         foregroundColor: Colors.white,
         elevation: 0,
@@ -75,9 +123,9 @@ class _AchievementsScreenState extends State<AchievementsScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Progres total',
-                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 16)),
-                            Text('$unlockedCount din ${all.length} realizări',
+                            Text(l.totalProgress,
+                                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 16)),
+                            Text(l.achievementsProgress(unlockedCount, all.length),
                                 style: const TextStyle(color: Colors.white, fontSize: 13)),
                           ],
                         ),
@@ -126,13 +174,13 @@ class _AchievementsScreenState extends State<AchievementsScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(a.title,
+                                Text(achievementTitle(l, a.id),
                                     style: TextStyle(
                                         color: unlocked ? Colors.white : Colors.white70,
                                         fontWeight: FontWeight.w800,
                                         fontSize: 15)),
                                 const SizedBox(height: 2),
-                                Text(a.description,
+                                Text(achievementDescription(l, a.id),
                                     style: const TextStyle(color: Colors.white60, fontSize: 12)),
                                 const SizedBox(height: 6),
                                 ClipRRect(

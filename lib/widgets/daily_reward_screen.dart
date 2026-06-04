@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bubble_pop/l10n/app_localizations.dart';
 import '../services/rewards_service.dart';
 
 class DailyRewardScreen extends StatefulWidget {
@@ -36,6 +37,7 @@ class _DailyRewardScreenState extends State<DailyRewardScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF1A0033),
       body: SafeArea(
@@ -56,13 +58,13 @@ class _DailyRewardScreenState extends State<DailyRewardScreen>
                   shaderCallback: (r) => LinearGradient(
                     colors: [widget.primaryColor, const Color(0xFFFFD740)],
                   ).createShader(r),
-                  child: const Text('BONUS ZILNIC',
-                      style: TextStyle(
+                  child: Text(l.dailyBonus,
+                      style: const TextStyle(
                           fontSize: 26, fontWeight: FontWeight.w900,
                           color: Colors.white, letterSpacing: 4)),
                 ),
                 const SizedBox(height: 4),
-                Text('Ziua ${widget.day} / 7',
+                Text(l.dayOfSeven(widget.day),
                     style: const TextStyle(color: Colors.white60, fontSize: 16)),
                 const SizedBox(height: 24),
                 Container(
@@ -109,7 +111,7 @@ class _DailyRewardScreenState extends State<DailyRewardScreen>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Z$day',
+                          Text(l.dayShort(day),
                               style: TextStyle(
                                   color: claimed ? Colors.white : Colors.white60,
                                   fontSize: 10)),
@@ -137,7 +139,7 @@ class _DailyRewardScreenState extends State<DailyRewardScreen>
                     textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
                   ),
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('PRIMEȘTE'),
+                  child: Text(l.claim),
                 ),
               ],
             ),

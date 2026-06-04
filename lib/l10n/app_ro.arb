@@ -1,0 +1,330 @@
+{
+  "@@locale": "ro",
+
+  "tooltipAchievements": "Realizări",
+  "@tooltipAchievements": {
+    "description": "Tooltip for the achievements button on the home screen"
+  },
+  "tooltipShop": "Magazin",
+  "@tooltipShop": {
+    "description": "Tooltip for the shop button on the home screen"
+  },
+  "topScore": "TOP SCORE",
+  "@topScore": {
+    "description": "Label above the best score on the home screen"
+  },
+  "newGame": "JOC NOU",
+  "@newGame": {
+    "description": "Main play button on the home screen"
+  },
+
+  "adNotAvailable": "Reclama nu e disponibilă acum.",
+  "@adNotAvailable": {
+    "description": "Snackbar shown when a rewarded ad cannot be displayed"
+  },
+  "gameOver": "Game Over",
+  "@gameOver": {
+    "description": "Title of the game over dialog"
+  },
+  "scoreResult": "Scor: {score}",
+  "@scoreResult": {
+    "description": "Final score shown in the game over dialog",
+    "placeholders": {
+      "score": {
+        "type": "int",
+        "example": "1250"
+      }
+    }
+  },
+  "newRecord": "🏆 Record!",
+  "@newRecord": {
+    "description": "Appended below the score when the player beats their high score"
+  },
+  "lifeRegenHint": "O viață revine la fiecare 3 minute în timpul jocului.",
+  "@lifeRegenHint": {
+    "description": "Hint in the game over dialog about regaining lives over time"
+  },
+  "playAgain": "Joc nou",
+  "@playAgain": {
+    "description": "Button to start a fresh game from the game over dialog"
+  },
+  "reviveWithAd": "+1 viață (reclamă)",
+  "@reviveWithAd": {
+    "description": "Button to revive with one extra life by watching a rewarded ad"
+  },
+  "achievementUnlocked": "🏆 Realizare deblocată",
+  "@achievementUnlocked": {
+    "description": "Header of the toast shown when an achievement is unlocked"
+  },
+  "statScore": "SCOR",
+  "@statScore": {
+    "description": "In-game HUD label for current score"
+  },
+  "statTop": "TOP",
+  "@statTop": {
+    "description": "In-game HUD label for best score"
+  },
+  "statLives": "VIEȚI",
+  "@statLives": {
+    "description": "In-game HUD label for remaining lives"
+  },
+  "statLevel": "NIVEL",
+  "@statLevel": {
+    "description": "In-game HUD label for current difficulty level"
+  },
+  "refillLivesTooltip": "❤️ Refill vieți (reclamă)",
+  "@refillLivesTooltip": {
+    "description": "Tooltip for the button that refills all lives via a rewarded ad"
+  },
+  "paused": "⏸  Pauză",
+  "@paused": {
+    "description": "Overlay text shown when the game is paused"
+  },
+  "start": "START",
+  "@start": {
+    "description": "Button to start the game"
+  },
+
+  "settingsTitle": "Setări",
+  "@settingsTitle": {
+    "description": "App bar title for the settings screen"
+  },
+  "sound": "Sunet",
+  "@sound": {
+    "description": "Sound toggle title in settings"
+  },
+  "soundSubtitle": "Efecte sonore în joc",
+  "@soundSubtitle": {
+    "description": "Sound toggle subtitle in settings"
+  },
+  "vibration": "Vibrații",
+  "@vibration": {
+    "description": "Vibration toggle title in settings"
+  },
+  "vibrationSubtitle": "Haptic feedback la atingere",
+  "@vibrationSubtitle": {
+    "description": "Vibration toggle subtitle in settings"
+  },
+  "version": "Versiune",
+  "@version": {
+    "description": "Version row title in settings"
+  },
+  "publisher": "Publisher",
+  "@publisher": {
+    "description": "Publisher row title in settings"
+  },
+
+  "shopUnavailableNow": "Magazinul nu este disponibil acum.",
+  "@shopUnavailableNow": {
+    "description": "Snackbar when a purchase cannot be started"
+  },
+  "restorePurchases": "Restaurează cumpărăturile",
+  "@restorePurchases": {
+    "description": "Tooltip for the restore purchases button"
+  },
+  "shopTitle": "Magazin",
+  "@shopTitle": {
+    "description": "App bar title for the shop screen"
+  },
+  "removeAds": "Fără reclame",
+  "@removeAds": {
+    "description": "Title of the no-ads purchase card"
+  },
+  "removeAdsOwned": "Achiziționat — bucură-te de joc fără reclame!",
+  "@removeAdsOwned": {
+    "description": "Shown on the no-ads card once it has been purchased"
+  },
+  "removeAdsDescription": "Elimină banner-ele și reclamele între nivele permanent.",
+  "@removeAdsDescription": {
+    "description": "Description on the no-ads card before purchase"
+  },
+  "unavailable": "Indisponibil",
+  "@unavailable": {
+    "description": "Fallback label when the no-ads product price is not loaded"
+  },
+  "coinPacks": "PACHETE MONEDE",
+  "@coinPacks": {
+    "description": "Section header for the coin packs in the shop"
+  },
+  "loading": "Se încarcă...",
+  "@loading": {
+    "description": "Shown while coin products are loading"
+  },
+  "shopUnavailable": "Magazin indisponibil",
+  "@shopUnavailable": {
+    "description": "Shown when the store is not available at all"
+  },
+  "coinsAmount": "{count} monede",
+  "@coinsAmount": {
+    "description": "Number of coins in a coin pack",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "1500"
+      }
+    }
+  },
+  "bonusAmount": "+ {count} BONUS",
+  "@bonusAmount": {
+    "description": "Bonus coins added to a coin pack",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "200"
+      }
+    }
+  },
+  "priceUnavailable": "N/A",
+  "@priceUnavailable": {
+    "description": "Fallback label when a coin pack price is not loaded"
+  },
+
+  "achievementsTitle": "Realizări",
+  "@achievementsTitle": {
+    "description": "App bar title for the achievements screen"
+  },
+  "totalProgress": "Progres total",
+  "@totalProgress": {
+    "description": "Header of the achievements progress card"
+  },
+  "achievementsProgress": "{unlocked} din {total} realizări",
+  "@achievementsProgress": {
+    "description": "How many achievements have been unlocked out of the total",
+    "placeholders": {
+      "unlocked": {
+        "type": "int",
+        "example": "3"
+      },
+      "total": {
+        "type": "int",
+        "example": "8"
+      }
+    }
+  },
+
+  "achFirstPopTitle": "Prima Bulă",
+  "@achFirstPopTitle": {
+    "description": "Achievement title: pop your first bubble"
+  },
+  "achFirstPopDesc": "Sparge prima bulă",
+  "@achFirstPopDesc": {
+    "description": "Achievement description: pop your first bubble"
+  },
+  "achPop50Title": "Spărgător de Bule",
+  "@achPop50Title": {
+    "description": "Achievement title: pop 50 bubbles total"
+  },
+  "achPop50Desc": "Sparge 50 de bule total",
+  "@achPop50Desc": {
+    "description": "Achievement description: pop 50 bubbles total"
+  },
+  "achPop500Title": "Maestru al Bulelor",
+  "@achPop500Title": {
+    "description": "Achievement title: pop 500 bubbles total"
+  },
+  "achPop500Desc": "Sparge 500 de bule total",
+  "@achPop500Desc": {
+    "description": "Achievement description: pop 500 bubbles total"
+  },
+  "achPop2000Title": "Legendă a Bulelor",
+  "@achPop2000Title": {
+    "description": "Achievement title: pop 2000 bubbles total"
+  },
+  "achPop2000Desc": "Sparge 2000 de bule total",
+  "@achPop2000Desc": {
+    "description": "Achievement description: pop 2000 bubbles total"
+  },
+  "achScore500Title": "Scor 500",
+  "@achScore500Title": {
+    "description": "Achievement title: reach score 500 in one game"
+  },
+  "achScore500Desc": "Atinge scorul 500 într-o partidă",
+  "@achScore500Desc": {
+    "description": "Achievement description: reach score 500 in one game"
+  },
+  "achScore2000Title": "Scor 2000",
+  "@achScore2000Title": {
+    "description": "Achievement title: reach score 2000 in one game"
+  },
+  "achScore2000Desc": "Atinge scorul 2000 într-o partidă",
+  "@achScore2000Desc": {
+    "description": "Achievement description: reach score 2000 in one game"
+  },
+  "achCombo5Title": "Serie Combo",
+  "@achCombo5Title": {
+    "description": "Achievement title: pop 5 bubbles within 2 seconds"
+  },
+  "achCombo5Desc": "Sparge 5 bule în 2 secunde",
+  "@achCombo5Desc": {
+    "description": "Achievement description: pop 5 bubbles within 2 seconds"
+  },
+  "achGames25Title": "Dedicat",
+  "@achGames25Title": {
+    "description": "Achievement title: play 25 games"
+  },
+  "achGames25Desc": "Joacă 25 de partide",
+  "@achGames25Desc": {
+    "description": "Achievement description: play 25 games"
+  },
+
+  "dailyBonus": "BONUS ZILNIC",
+  "@dailyBonus": {
+    "description": "Title of the daily reward screen"
+  },
+  "dayOfSeven": "Ziua {day} / 7",
+  "@dayOfSeven": {
+    "description": "Which day of the 7-day streak the reward is for",
+    "placeholders": {
+      "day": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "dayShort": "Z{day}",
+  "@dayShort": {
+    "description": "Short day label inside each daily reward cell (e.g. day 1 -> Z1)",
+    "placeholders": {
+      "day": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+  "claim": "PRIMEȘTE",
+  "@claim": {
+    "description": "Button to claim the daily reward"
+  },
+
+  "offerRemoveAdsTitle": "Scapă de reclame",
+  "@offerRemoveAdsTitle": {
+    "description": "Title of the remove-ads house promo dialog"
+  },
+  "offerRemoveAdsBody": "Joacă fără bannere și fără reclame care te întrerup. O singură dată, pentru totdeauna.",
+  "@offerRemoveAdsBody": {
+    "description": "Body of the remove-ads house promo dialog"
+  },
+  "offerRemoveAdsButton": "Elimină reclamele • {price}",
+  "@offerRemoveAdsButton": {
+    "description": "Buy button on the remove-ads promo dialog, with the store price",
+    "placeholders": {
+      "price": {
+        "type": "String",
+        "example": "15 lei"
+      }
+    }
+  },
+  "later": "Mai târziu",
+  "@later": {
+    "description": "Dismiss button on the remove-ads promo dialog"
+  },
+
+  "notificationTitle": "Bubble Pop Saga",
+  "@notificationTitle": {
+    "description": "Re-engagement notification title (used via device locale, no context)"
+  },
+  "notificationBody": "Sparge niște bule și relaxează-te! 🫧",
+  "@notificationBody": {
+    "description": "Re-engagement notification body (used via device locale, no context)"
+  }
+}
