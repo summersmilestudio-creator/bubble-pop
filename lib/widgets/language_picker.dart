@@ -32,10 +32,10 @@ void showLanguagePicker(BuildContext context) {
                 ],
               ),
             ),
-            _tile(c, l.languageSystem, current == null,
+            _tile(c, '🌐  ${l.languageSystem}', current == null,
                 () => LocaleController.instance.set(null)),
             for (final e in entries)
-              _tile(c, e.value, current == e.key,
+              _tile(c, '${LocaleController.flagFor(e.key)}  ${e.value}', current == e.key,
                   () => LocaleController.instance.set(Locale(e.key))),
             const SizedBox(height: 8),
           ],

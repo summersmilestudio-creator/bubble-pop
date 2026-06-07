@@ -7,6 +7,7 @@ import '../services/rewards_service.dart';
 import '../services/lives_service.dart';
 import '../services/ads_service.dart';
 import '../services/purchase_service.dart';
+import '../services/locale_controller.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../widgets/daily_reward_screen.dart';
 import '../widgets/game_juice.dart';
@@ -171,7 +172,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                             ),
                             IconButton(
                               tooltip: l.language,
-                              icon: const Icon(Icons.language, color: Color(0xFF40C4FF)),
+                              icon: Text(
+                                LocaleController.flagFor(
+                                    Localizations.localeOf(context).languageCode),
+                                style: const TextStyle(fontSize: 22),
+                              ),
                               onPressed: () => showLanguagePicker(context),
                             ),
                           ],
@@ -180,25 +185,41 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                       ],
                     ),
                     const Spacer(),
-                    ShaderMask(
-                      shaderCallback: (r) => const LinearGradient(
-                        colors: [Color(0xFFFF4081), Color(0xFF7C4DFF)],
-                      ).createShader(r),
-                      child: const Text('BUBBLE',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 64, fontWeight: FontWeight.w900,
-                              color: Colors.white, letterSpacing: 6, height: 0.9)),
-                    ),
-                    ShaderMask(
-                      shaderCallback: (r) => const LinearGradient(
-                        colors: [Color(0xFF7C4DFF), Color(0xFFFF4081)],
-                      ).createShader(r),
-                      child: const Text('POP',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 64, fontWeight: FontWeight.w900,
-                              color: Colors.white, letterSpacing: 6, height: 0.9)),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              color: const Color(0xFF7C4DFF).withValues(alpha: 0.45),
+                              blurRadius: 55, spreadRadius: 2),
+                          BoxShadow(
+                              color: const Color(0xFFFF4081).withValues(alpha: 0.30),
+                              blurRadius: 35),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          ShaderMask(
+                            shaderCallback: (r) => const LinearGradient(
+                              colors: [Color(0xFFFF80AB), Color(0xFF7C4DFF)],
+                            ).createShader(r),
+                            child: const Text('BUBBLE',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 64, fontWeight: FontWeight.w900,
+                                    color: Colors.white, letterSpacing: 6, height: 0.9)),
+                          ),
+                          ShaderMask(
+                            shaderCallback: (r) => const LinearGradient(
+                              colors: [Color(0xFF7C4DFF), Color(0xFFFF80AB)],
+                            ).createShader(r),
+                            child: const Text('POP',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 64, fontWeight: FontWeight.w900,
+                                    color: Colors.white, letterSpacing: 6, height: 0.9)),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 20),
                     _livesCard(l),
@@ -267,11 +288,19 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Widget _livesCard(AppLocalizations l) {
     final full = _livesCount >= LivesService.maxLives;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFFF4081).withValues(alpha: 0.5)),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.white.withValues(alpha: 0.13), Colors.white.withValues(alpha: 0.03)],
+        ),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFFFF4081).withValues(alpha: 0.45)),
+        boxShadow: [
+          BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 8)),
+          BoxShadow(color: const Color(0xFFFF4081).withValues(alpha: 0.18), blurRadius: 22),
+        ],
       ),
       child: Column(
         children: [
@@ -301,11 +330,19 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   Widget _scoreCard(AppLocalizations l) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.4),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFF7C4DFF).withValues(alpha: 0.5)),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.white.withValues(alpha: 0.13), Colors.white.withValues(alpha: 0.03)],
+        ),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFF7C4DFF).withValues(alpha: 0.45)),
+        boxShadow: [
+          BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 8)),
+          BoxShadow(color: const Color(0xFF7C4DFF).withValues(alpha: 0.18), blurRadius: 22),
+        ],
       ),
       child: Column(
         children: [
