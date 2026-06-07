@@ -324,4 +324,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get buyAction => 'Купить';
+
+  @override
+  String get language => 'Язык';
+
+  @override
+  String get languageSystem => 'Системный по умолчанию';
 }

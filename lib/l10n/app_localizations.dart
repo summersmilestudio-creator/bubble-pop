@@ -667,6 +667,18 @@ abstract class AppLocalizations {
   /// In ro, this message translates to:
   /// **'Cumpără'**
   String get buyAction;
+
+  /// Language picker title
+  ///
+  /// In ro, this message translates to:
+  /// **'Limbă'**
+  String get language;
+
+  /// Follow device language option
+  ///
+  /// In ro, this message translates to:
+  /// **'Implicit (sistem)'**
+  String get languageSystem;
 }
 
 class _AppLocalizationsDelegate

@@ -91,5 +91,7 @@
   "powerActivated": "{name} attivato!",
   "powerNoneLeft": "{name} esaurito. Comprane altri nel negozio.",
   "shieldActive": "🛡 Scudo attivo",
-  "buyAction": "Acquista"
+  "buyAction": "Acquista",
+  "language": "Lingua",
+  "languageSystem": "Predefinito di sistema"
 }

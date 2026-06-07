@@ -311,4 +311,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get buyAction => '购买';
+
+  @override
+  String get language => '语言';
+
+  @override
+  String get languageSystem => '系统默认';
 }

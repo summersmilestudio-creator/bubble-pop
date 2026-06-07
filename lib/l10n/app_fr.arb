@@ -91,5 +91,7 @@
   "powerActivated": "{name} activé !",
   "powerNoneLeft": "Plus de {name}. Achètes-en dans la boutique.",
   "shieldActive": "🛡 Bouclier actif",
-  "buyAction": "Acheter"
+  "buyAction": "Acheter",
+  "language": "Langue",
+  "languageSystem": "Par défaut du système"
 }

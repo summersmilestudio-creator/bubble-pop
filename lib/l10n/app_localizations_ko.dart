@@ -311,4 +311,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get buyAction => '구매';
+
+  @override
+  String get language => '언어';
+
+  @override
+  String get languageSystem => '시스템 기본값';
 }

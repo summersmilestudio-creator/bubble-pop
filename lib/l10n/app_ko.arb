@@ -91,5 +91,7 @@
   "powerActivated": "{name} 발동!",
   "powerNoneLeft": "{name}이(가) 없습니다. 상점에서 구매하세요.",
   "shieldActive": "🛡 방패 활성",
-  "buyAction": "구매"
+  "buyAction": "구매",
+  "language": "언어",
+  "languageSystem": "시스템 기본값"
 }

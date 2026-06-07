@@ -91,5 +91,7 @@
   "powerActivated": "{name} 已启动！",
   "powerNoneLeft": "没有{name}了，去商店购买。",
   "shieldActive": "🛡 护盾生效",
-  "buyAction": "购买"
+  "buyAction": "购买",
+  "language": "语言",
+  "languageSystem": "系统默认"
 }

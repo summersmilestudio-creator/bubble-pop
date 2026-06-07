@@ -91,5 +91,7 @@
   "powerActivated": "{name} 発動！",
   "powerNoneLeft": "{name} がありません。ショップで購入してください。",
   "shieldActive": "🛡 シールド有効",
-  "buyAction": "購入"
+  "buyAction": "購入",
+  "language": "言語",
+  "languageSystem": "システムの既定"
 }

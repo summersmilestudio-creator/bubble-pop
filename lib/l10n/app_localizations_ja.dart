@@ -311,4 +311,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get buyAction => '購入';
+
+  @override
+  String get language => '言語';
+
+  @override
+  String get languageSystem => 'システムの既定';
 }

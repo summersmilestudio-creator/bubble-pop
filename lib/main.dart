@@ -6,12 +6,14 @@ import 'services/review_service.dart';
 import 'screens/home_screen.dart';
 import 'services/ads_service.dart';
 import 'services/purchase_service.dart';
+import 'services/locale_controller.dart';
 import 'widgets/remove_ads_offer.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await LocaleController.instance.load();
   await PurchaseService.instance.initialize();
   await AdsService.instance.initialize();
   ReviewService.instance.registerLaunch();
@@ -56,10 +58,13 @@ class _BubblePopAppState extends State<BubblePopApp> with WidgetsBindingObserver
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ValueListenableBuilder<Locale?>(
+      valueListenable: LocaleController.instance.notifier,
+      builder: (context, locale, _) => MaterialApp(
       title: 'Bubble Pop',
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
+      locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
@@ -71,6 +76,7 @@ class _BubblePopAppState extends State<BubblePopApp> with WidgetsBindingObserver
         scaffoldBackgroundColor: const Color(0xFF1A0033),
       ),
       home: UpgradeAlert(child: const HomeScreen()),
+    ),
     );
   }
 }

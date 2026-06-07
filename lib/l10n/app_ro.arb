@@ -1,6 +1,5 @@
 {
   "@@locale": "ro",
-
   "tooltipAchievements": "Realizări",
   "@tooltipAchievements": {
     "description": "Tooltip for the achievements button on the home screen"
@@ -17,7 +16,6 @@
   "@newGame": {
     "description": "Main play button on the home screen"
   },
-
   "adNotAvailable": "Reclama nu e disponibilă acum.",
   "@adNotAvailable": {
     "description": "Snackbar shown when a rewarded ad cannot be displayed"
@@ -84,7 +82,6 @@
   "@start": {
     "description": "Button to start the game"
   },
-
   "settingsTitle": "Setări",
   "@settingsTitle": {
     "description": "App bar title for the settings screen"
@@ -113,7 +110,6 @@
   "@publisher": {
     "description": "Publisher row title in settings"
   },
-
   "shopUnavailableNow": "Magazinul nu este disponibil acum.",
   "@shopUnavailableNow": {
     "description": "Snackbar when a purchase cannot be started"
@@ -178,7 +174,6 @@
   "@priceUnavailable": {
     "description": "Fallback label when a coin pack price is not loaded"
   },
-
   "achievementsTitle": "Realizări",
   "@achievementsTitle": {
     "description": "App bar title for the achievements screen"
@@ -201,7 +196,6 @@
       }
     }
   },
-
   "achFirstPopTitle": "Prima Bulă",
   "@achFirstPopTitle": {
     "description": "Achievement title: pop your first bubble"
@@ -266,7 +260,6 @@
   "@achGames25Desc": {
     "description": "Achievement description: play 25 games"
   },
-
   "dailyBonus": "BONUS ZILNIC",
   "@dailyBonus": {
     "description": "Title of the daily reward screen"
@@ -295,7 +288,6 @@
   "@claim": {
     "description": "Button to claim the daily reward"
   },
-
   "offerRemoveAdsTitle": "Scapă de reclame",
   "@offerRemoveAdsTitle": {
     "description": "Title of the remove-ads house promo dialog"
@@ -318,7 +310,6 @@
   "@later": {
     "description": "Dismiss button on the remove-ads promo dialog"
   },
-
   "notificationTitle": "Bubble Pop Saga",
   "@notificationTitle": {
     "description": "Re-engagement notification title (used via device locale, no context)"
@@ -327,7 +318,6 @@
   "@notificationBody": {
     "description": "Re-engagement notification body (used via device locale, no context)"
   },
-
   "livesFull": "Vieți pline",
   "@livesFull": {
     "description": "Shown on the home screen when the player has the maximum number of lives"
@@ -465,5 +455,13 @@
   "buyAction": "Cumpără",
   "@buyAction": {
     "description": "Generic buy button label"
+  },
+  "language": "Limbă",
+  "languageSystem": "Implicit (sistem)",
+  "@language": {
+    "description": "Language picker title"
+  },
+  "@languageSystem": {
+    "description": "Follow device language option"
   }
 }

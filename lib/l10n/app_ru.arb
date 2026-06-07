@@ -98,5 +98,7 @@
   "powerActivated": "{name} активирован!",
   "powerNoneLeft": "{name} закончились. Купите в магазине.",
   "shieldActive": "🛡 Щит активен",
-  "buyAction": "Купить"
+  "buyAction": "Купить",
+  "language": "Язык",
+  "languageSystem": "Системный по умолчанию"
 }

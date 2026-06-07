@@ -317,4 +317,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get buyAction => 'Kaufen';
+
+  @override
+  String get language => 'Sprache';
+
+  @override
+  String get languageSystem => 'Systemstandard';
 }

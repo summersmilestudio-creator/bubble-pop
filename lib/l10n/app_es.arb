@@ -91,5 +91,7 @@
   "powerActivated": "¡{name} activado!",
   "powerNoneLeft": "No te queda {name}. Compra más en la tienda.",
   "shieldActive": "🛡 Escudo activo",
-  "buyAction": "Comprar"
+  "buyAction": "Comprar",
+  "language": "Idioma",
+  "languageSystem": "Predeterminado del sistema"
 }
