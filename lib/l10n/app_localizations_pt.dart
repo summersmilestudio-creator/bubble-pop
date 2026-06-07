@@ -36,7 +36,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'Você recupera uma vida a cada 3 minutos enquanto joga.';
+      'As vidas recarregam sozinhas, uma a cada 15 minutos.';
 
   @override
   String get playAgain => 'Jogar de novo';
@@ -228,4 +228,93 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get notificationBody => 'Estoure umas bolhas e relaxe! 🫧';
+
+  @override
+  String get livesFull => 'Vidas no máximo';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Próxima vida em $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Sem vidas';
+
+  @override
+  String get outOfLivesBody =>
+      'Espera recarregarem, vê um anúncio ou usa moedas.';
+
+  @override
+  String get watchAdLife => '+1 vida (anúncio)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 vida ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Esperar';
+
+  @override
+  String get notEnoughCoins => 'Moedas insuficientes';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Vê um anúncio → $coins moedas';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins moedas!';
+  }
+
+  @override
+  String get powersTitle => 'PODERES';
+
+  @override
+  String get powerBombName => 'Bomba';
+
+  @override
+  String get powerBombDesc => 'Estoura todas as bolhas do ecrã';
+
+  @override
+  String get powerFreezeName => 'Congelar';
+
+  @override
+  String get powerFreezeDesc => 'Para as bolhas por 5 segundos';
+
+  @override
+  String get powerSlowName => 'Câmara lenta';
+
+  @override
+  String get powerSlowDesc =>
+      'As bolhas sobem a meia velocidade por 10 segundos';
+
+  @override
+  String get powerShieldName => 'Escudo';
+
+  @override
+  String get powerShieldDesc =>
+      'Bloqueia uma falha: uma bolha perdida não tira vida';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'Tens: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name ativado!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return 'Sem $name. Compra mais na loja.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Escudo ativo';
+
+  @override
+  String get buyAction => 'Comprar';
 }

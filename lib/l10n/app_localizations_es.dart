@@ -36,7 +36,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'Recuperas una vida cada 3 minutos mientras juegas.';
+      'Las vidas se recargan solas, una cada 15 minutos.';
 
   @override
   String get playAgain => 'Jugar de nuevo';
@@ -228,4 +228,93 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get notificationBody => '¡Revienta unas burbujas y relájate! 🫧';
+
+  @override
+  String get livesFull => 'Vidas al máximo';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Próxima vida en $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Sin vidas';
+
+  @override
+  String get outOfLivesBody =>
+      'Espera a que se recarguen, mira un anuncio o usa monedas.';
+
+  @override
+  String get watchAdLife => '+1 vida (anuncio)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 vida ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Esperar';
+
+  @override
+  String get notEnoughCoins => 'No tienes monedas suficientes';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Mira un anuncio → $coins monedas';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '¡+$coins monedas!';
+  }
+
+  @override
+  String get powersTitle => 'PODERES';
+
+  @override
+  String get powerBombName => 'Bomba';
+
+  @override
+  String get powerBombDesc => 'Revienta todas las burbujas de la pantalla';
+
+  @override
+  String get powerFreezeName => 'Congelar';
+
+  @override
+  String get powerFreezeDesc => 'Detiene las burbujas 5 segundos';
+
+  @override
+  String get powerSlowName => 'Cámara lenta';
+
+  @override
+  String get powerSlowDesc =>
+      'Las burbujas suben a media velocidad durante 10 segundos';
+
+  @override
+  String get powerShieldName => 'Escudo';
+
+  @override
+  String get powerShieldDesc =>
+      'Bloquea un fallo: una burbuja perdida no te quita vida';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'Tienes: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '¡$name activado!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return 'No te queda $name. Compra más en la tienda.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Escudo activo';
+
+  @override
+  String get buyAction => 'Comprar';
 }

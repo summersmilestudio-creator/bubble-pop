@@ -36,7 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'You get one life back every 3 minutes while playing.';
+      'Lives refill on their own, one every 15 minutes.';
 
   @override
   String get playAgain => 'New game';
@@ -228,4 +228,92 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notificationBody => 'Pop some bubbles and unwind! 🫧';
+
+  @override
+  String get livesFull => 'Lives full';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Next life in $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Out of lives';
+
+  @override
+  String get outOfLivesBody =>
+      'Wait for them to refill, watch an ad, or use coins.';
+
+  @override
+  String get watchAdLife => '+1 life (ad)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 life ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Wait';
+
+  @override
+  String get notEnoughCoins => 'Not enough coins';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Watch an ad → $coins coins';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins coins!';
+  }
+
+  @override
+  String get powersTitle => 'POWERS';
+
+  @override
+  String get powerBombName => 'Bomb';
+
+  @override
+  String get powerBombDesc => 'Pops every bubble on screen';
+
+  @override
+  String get powerFreezeName => 'Freeze';
+
+  @override
+  String get powerFreezeDesc => 'Stops bubbles for 5 seconds';
+
+  @override
+  String get powerSlowName => 'Slow-mo';
+
+  @override
+  String get powerSlowDesc => 'Bubbles rise at half speed for 10 seconds';
+
+  @override
+  String get powerShieldName => 'Shield';
+
+  @override
+  String get powerShieldDesc =>
+      'Blocks one miss — a dropped bubble won\'t cost a life';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'You have: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name activated!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return 'No $name left. Buy more in the shop.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Shield active';
+
+  @override
+  String get buyAction => 'Buy';
 }

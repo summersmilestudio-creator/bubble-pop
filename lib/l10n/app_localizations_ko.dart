@@ -35,7 +35,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get newRecord => '🏆 신기록!';
 
   @override
-  String get lifeRegenHint => '플레이 중에는 3분마다 생명이 하나씩 회복됩니다.';
+  String get lifeRegenHint => '생명은 15분마다 하나씩 자동으로 회복됩니다.';
 
   @override
   String get playAgain => '새 게임';
@@ -225,4 +225,90 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get notificationBody => '버블을 터뜨리며 쉬어 가세요! 🫧';
+
+  @override
+  String get livesFull => '생명 가득';
+
+  @override
+  String nextLifeIn(String time) {
+    return '다음 생명까지 $time';
+  }
+
+  @override
+  String get outOfLivesTitle => '생명이 없습니다';
+
+  @override
+  String get outOfLivesBody => '회복을 기다리거나, 광고를 보거나, 코인을 사용하세요.';
+
+  @override
+  String get watchAdLife => '+1 생명 (광고)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 생명 ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => '기다리기';
+
+  @override
+  String get notEnoughCoins => '코인이 부족합니다';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return '광고 보기 → $coins 코인';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins 코인!';
+  }
+
+  @override
+  String get powersTitle => '파워';
+
+  @override
+  String get powerBombName => '폭탄';
+
+  @override
+  String get powerBombDesc => '화면의 모든 버블을 터뜨립니다';
+
+  @override
+  String get powerFreezeName => '얼리기';
+
+  @override
+  String get powerFreezeDesc => '5초 동안 버블을 멈춥니다';
+
+  @override
+  String get powerSlowName => '슬로우';
+
+  @override
+  String get powerSlowDesc => '10초 동안 버블이 절반 속도로 올라갑니다';
+
+  @override
+  String get powerShieldName => '방패';
+
+  @override
+  String get powerShieldDesc => '실수 한 번 방지: 놓친 버블이 생명을 깍지 않습니다';
+
+  @override
+  String powerOwnedCount(int count) {
+    return '보유: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name 발동!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return '$name이(가) 없습니다. 상점에서 구매하세요.';
+  }
+
+  @override
+  String get shieldActive => '🛡 방패 활성';
+
+  @override
+  String get buyAction => '구매';
 }

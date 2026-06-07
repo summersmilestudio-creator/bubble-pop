@@ -36,7 +36,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'Während des Spiels bekommst du alle 3 Minuten ein Leben zurück.';
+      'Leben füllen sich von selbst wieder auf – eins alle 15 Minuten.';
 
   @override
   String get playAgain => 'Neues Spiel';
@@ -229,4 +229,92 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get notificationBody =>
       'Zerplatze ein paar Blasen und entspann dich! 🫧';
+
+  @override
+  String get livesFull => 'Leben voll';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Nächstes Leben in $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Keine Leben mehr';
+
+  @override
+  String get outOfLivesBody =>
+      'Warte auf das Auffüllen, sieh dir eine Anzeige an oder nutze Münzen.';
+
+  @override
+  String get watchAdLife => '+1 Leben (Anzeige)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 Leben ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Warten';
+
+  @override
+  String get notEnoughCoins => 'Nicht genug Münzen';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Anzeige ansehen → $coins Münzen';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins Münzen!';
+  }
+
+  @override
+  String get powersTitle => 'KRÄFTE';
+
+  @override
+  String get powerBombName => 'Bombe';
+
+  @override
+  String get powerBombDesc => 'Lässt alle Blasen auf dem Bildschirm platzen';
+
+  @override
+  String get powerFreezeName => 'Einfrieren';
+
+  @override
+  String get powerFreezeDesc => 'Stoppt die Blasen für 5 Sekunden';
+
+  @override
+  String get powerSlowName => 'Zeitlupe';
+
+  @override
+  String get powerSlowDesc => 'Blasen steigen 10 Sekunden lang halb so schnell';
+
+  @override
+  String get powerShieldName => 'Schild';
+
+  @override
+  String get powerShieldDesc =>
+      'Blockt einen Fehler – eine verpasste Blase kostet kein Leben';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'Du hast: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name aktiviert!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return 'Kein $name mehr. Kaufe mehr im Shop.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Schild aktiv';
+
+  @override
+  String get buyAction => 'Kaufen';
 }

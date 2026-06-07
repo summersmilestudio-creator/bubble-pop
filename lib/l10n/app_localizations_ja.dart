@@ -35,7 +35,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get newRecord => '🏆 新記録！';
 
   @override
-  String get lifeRegenHint => 'プレイ中は3分ごとにライフが1つ回復します。';
+  String get lifeRegenHint => 'ライフは15分ごとに1つ自動で回復します。';
 
   @override
   String get playAgain => 'もう一度';
@@ -225,4 +225,90 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notificationBody => 'バブルを割ってリラックスしよう！🫧';
+
+  @override
+  String get livesFull => 'ライフ満タン';
+
+  @override
+  String nextLifeIn(String time) {
+    return '次のライフまで $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'ライフがありません';
+
+  @override
+  String get outOfLivesBody => '回復を待つか、広告を見るか、コインを使ってください。';
+
+  @override
+  String get watchAdLife => '+1 ライフ（広告）';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 ライフ（$coins 🪙）';
+  }
+
+  @override
+  String get waitButton => '待つ';
+
+  @override
+  String get notEnoughCoins => 'コインが足りません';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return '広告を見る → $coins コイン';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins コイン！';
+  }
+
+  @override
+  String get powersTitle => 'パワー';
+
+  @override
+  String get powerBombName => 'ボム';
+
+  @override
+  String get powerBombDesc => '画面のバブルをすべて割る';
+
+  @override
+  String get powerFreezeName => 'フリーズ';
+
+  @override
+  String get powerFreezeDesc => '5秒間バブルを止める';
+
+  @override
+  String get powerSlowName => 'スロー';
+
+  @override
+  String get powerSlowDesc => '10秒間バブルの上昇が半分の速さに';
+
+  @override
+  String get powerShieldName => 'シールド';
+
+  @override
+  String get powerShieldDesc => 'ミスを1回防ぐ：逃したバブルでライフが減りません';
+
+  @override
+  String powerOwnedCount(int count) {
+    return '所持数：$count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name 発動！';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return '$name がありません。ショップで購入してください。';
+  }
+
+  @override
+  String get shieldActive => '🛡 シールド有効';
+
+  @override
+  String get buyAction => '購入';
 }

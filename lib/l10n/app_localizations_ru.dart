@@ -36,7 +36,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'Во время игры одна жизнь восстанавливается каждые 3 минуты.';
+      'Жизни восстанавливаются сами — по одной каждые 15 минут.';
 
   @override
   String get playAgain => 'Новая игра';
@@ -236,4 +236,92 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notificationBody => 'Лопни пару пузырей и отдохни! 🫧';
+
+  @override
+  String get livesFull => 'Жизни полны';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Следующая жизнь через $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Жизни закончились';
+
+  @override
+  String get outOfLivesBody =>
+      'Подождите восстановления, посмотрите рекламу или потратьте монеты.';
+
+  @override
+  String get watchAdLife => '+1 жизнь (реклама)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 жизнь ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Подождать';
+
+  @override
+  String get notEnoughCoins => 'Недостаточно монет';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Смотреть рекламу → $coins монет';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins монет!';
+  }
+
+  @override
+  String get powersTitle => 'СИЛЫ';
+
+  @override
+  String get powerBombName => 'Бомба';
+
+  @override
+  String get powerBombDesc => 'Лопает все пузыри на экране';
+
+  @override
+  String get powerFreezeName => 'Заморозка';
+
+  @override
+  String get powerFreezeDesc => 'Останавливает пузыри на 5 секунд';
+
+  @override
+  String get powerSlowName => 'Замедление';
+
+  @override
+  String get powerSlowDesc => 'Пузыри поднимаются вдвое медленнее 10 секунд';
+
+  @override
+  String get powerShieldName => 'Щит';
+
+  @override
+  String get powerShieldDesc =>
+      'Блокирует один промах: упущенный пузырь не отнимет жизнь';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'У вас: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name активирован!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return '$name закончились. Купите в магазине.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Щит активен';
+
+  @override
+  String get buyAction => 'Купить';
 }

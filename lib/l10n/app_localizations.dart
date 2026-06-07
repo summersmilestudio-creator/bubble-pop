@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// Hint in the game over dialog about regaining lives over time
   ///
   /// In ro, this message translates to:
-  /// **'O viață revine la fiecare 3 minute în timpul jocului.'**
+  /// **'Viețile se refac singure, câte una la fiecare 15 minute.'**
   String get lifeRegenHint;
 
   /// Button to start a fresh game from the game over dialog
@@ -523,6 +523,150 @@ abstract class AppLocalizations {
   /// In ro, this message translates to:
   /// **'Sparge niște bule și relaxează-te! 🫧'**
   String get notificationBody;
+
+  /// Shown on the home screen when the player has the maximum number of lives
+  ///
+  /// In ro, this message translates to:
+  /// **'Vieți pline'**
+  String get livesFull;
+
+  /// Countdown on the home screen until the next life regenerates
+  ///
+  /// In ro, this message translates to:
+  /// **'Următoarea viață în {time}'**
+  String nextLifeIn(String time);
+
+  /// Title of the dialog shown when trying to play with zero lives
+  ///
+  /// In ro, this message translates to:
+  /// **'Nu mai ai vieți'**
+  String get outOfLivesTitle;
+
+  /// Body of the out-of-lives dialog
+  ///
+  /// In ro, this message translates to:
+  /// **'Așteaptă refacerea lor, vezi o reclamă sau folosește monede.'**
+  String get outOfLivesBody;
+
+  /// Button to gain one life by watching a rewarded ad
+  ///
+  /// In ro, this message translates to:
+  /// **'+1 viață (reclamă)'**
+  String get watchAdLife;
+
+  /// Button to buy one life with coins
+  ///
+  /// In ro, this message translates to:
+  /// **'+1 viață ({coins} 🪙)'**
+  String coinsLife(int coins);
+
+  /// Dismiss button on the out-of-lives dialog
+  ///
+  /// In ro, this message translates to:
+  /// **'Aștept'**
+  String get waitButton;
+
+  /// Snackbar shown when the player cannot afford something with coins
+  ///
+  /// In ro, this message translates to:
+  /// **'Nu ai destule monede'**
+  String get notEnoughCoins;
+
+  /// Home screen button offering coins in exchange for watching a rewarded ad
+  ///
+  /// In ro, this message translates to:
+  /// **'Vezi o reclamă → {coins} monede'**
+  String watchAdForCoins(int coins);
+
+  /// Snackbar confirming coins earned from a rewarded ad
+  ///
+  /// In ro, this message translates to:
+  /// **'+{coins} monede!'**
+  String coinsEarned(int coins);
+
+  /// Section header for special powers (shop and in-game)
+  ///
+  /// In ro, this message translates to:
+  /// **'PUTERI'**
+  String get powersTitle;
+
+  /// Name of the bomb power
+  ///
+  /// In ro, this message translates to:
+  /// **'Bombă'**
+  String get powerBombName;
+
+  /// Description of the bomb power
+  ///
+  /// In ro, this message translates to:
+  /// **'Sparge toate baloanele de pe ecran'**
+  String get powerBombDesc;
+
+  /// Name of the freeze power
+  ///
+  /// In ro, this message translates to:
+  /// **'Înghețare'**
+  String get powerFreezeName;
+
+  /// Description of the freeze power
+  ///
+  /// In ro, this message translates to:
+  /// **'Oprește baloanele 5 secunde'**
+  String get powerFreezeDesc;
+
+  /// Name of the slow-motion power
+  ///
+  /// In ro, this message translates to:
+  /// **'Încetinitor'**
+  String get powerSlowName;
+
+  /// Description of the slow-motion power
+  ///
+  /// In ro, this message translates to:
+  /// **'Baloanele urcă cu jumătate de viteză 10 secunde'**
+  String get powerSlowDesc;
+
+  /// Name of the shield power
+  ///
+  /// In ro, this message translates to:
+  /// **'Scut'**
+  String get powerShieldName;
+
+  /// Description of the shield power
+  ///
+  /// In ro, this message translates to:
+  /// **'Blochează o ratare — un balon scăpat nu îți ia viață'**
+  String get powerShieldDesc;
+
+  /// How many of a given power the player owns
+  ///
+  /// In ro, this message translates to:
+  /// **'Ai: {count}'**
+  String powerOwnedCount(int count);
+
+  /// Snackbar when a power is activated in-game
+  ///
+  /// In ro, this message translates to:
+  /// **'{name} activat!'**
+  String powerActivated(String name);
+
+  /// Snackbar when the player taps an empty power
+  ///
+  /// In ro, this message translates to:
+  /// **'Nu mai ai {name}. Cumpără din magazin.'**
+  String powerNoneLeft(String name);
+
+  /// Overlay badge shown while the shield power is active
+  ///
+  /// In ro, this message translates to:
+  /// **'🛡 Scut activ'**
+  String get shieldActive;
+
+  /// Generic buy button label
+  ///
+  /// In ro, this message translates to:
+  /// **'Cumpără'**
+  String get buyAction;
 }
 
 class _AppLocalizationsDelegate

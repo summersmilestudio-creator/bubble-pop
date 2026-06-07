@@ -40,7 +40,7 @@
   "@newRecord": {
     "description": "Appended below the score when the player beats their high score"
   },
-  "lifeRegenHint": "O viață revine la fiecare 3 minute în timpul jocului.",
+  "lifeRegenHint": "Viețile se refac singure, câte una la fiecare 15 minute.",
   "@lifeRegenHint": {
     "description": "Hint in the game over dialog about regaining lives over time"
   },
@@ -326,5 +326,144 @@
   "notificationBody": "Sparge niște bule și relaxează-te! 🫧",
   "@notificationBody": {
     "description": "Re-engagement notification body (used via device locale, no context)"
+  },
+
+  "livesFull": "Vieți pline",
+  "@livesFull": {
+    "description": "Shown on the home screen when the player has the maximum number of lives"
+  },
+  "nextLifeIn": "Următoarea viață în {time}",
+  "@nextLifeIn": {
+    "description": "Countdown on the home screen until the next life regenerates",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "12:30"
+      }
+    }
+  },
+  "outOfLivesTitle": "Nu mai ai vieți",
+  "@outOfLivesTitle": {
+    "description": "Title of the dialog shown when trying to play with zero lives"
+  },
+  "outOfLivesBody": "Așteaptă refacerea lor, vezi o reclamă sau folosește monede.",
+  "@outOfLivesBody": {
+    "description": "Body of the out-of-lives dialog"
+  },
+  "watchAdLife": "+1 viață (reclamă)",
+  "@watchAdLife": {
+    "description": "Button to gain one life by watching a rewarded ad"
+  },
+  "coinsLife": "+1 viață ({coins} 🪙)",
+  "@coinsLife": {
+    "description": "Button to buy one life with coins",
+    "placeholders": {
+      "coins": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+  "waitButton": "Aștept",
+  "@waitButton": {
+    "description": "Dismiss button on the out-of-lives dialog"
+  },
+  "notEnoughCoins": "Nu ai destule monede",
+  "@notEnoughCoins": {
+    "description": "Snackbar shown when the player cannot afford something with coins"
+  },
+  "watchAdForCoins": "Vezi o reclamă → {coins} monede",
+  "@watchAdForCoins": {
+    "description": "Home screen button offering coins in exchange for watching a rewarded ad",
+    "placeholders": {
+      "coins": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "coinsEarned": "+{coins} monede!",
+  "@coinsEarned": {
+    "description": "Snackbar confirming coins earned from a rewarded ad",
+    "placeholders": {
+      "coins": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "powersTitle": "PUTERI",
+  "@powersTitle": {
+    "description": "Section header for special powers (shop and in-game)"
+  },
+  "powerBombName": "Bombă",
+  "@powerBombName": {
+    "description": "Name of the bomb power"
+  },
+  "powerBombDesc": "Sparge toate baloanele de pe ecran",
+  "@powerBombDesc": {
+    "description": "Description of the bomb power"
+  },
+  "powerFreezeName": "Înghețare",
+  "@powerFreezeName": {
+    "description": "Name of the freeze power"
+  },
+  "powerFreezeDesc": "Oprește baloanele 5 secunde",
+  "@powerFreezeDesc": {
+    "description": "Description of the freeze power"
+  },
+  "powerSlowName": "Încetinitor",
+  "@powerSlowName": {
+    "description": "Name of the slow-motion power"
+  },
+  "powerSlowDesc": "Baloanele urcă cu jumătate de viteză 10 secunde",
+  "@powerSlowDesc": {
+    "description": "Description of the slow-motion power"
+  },
+  "powerShieldName": "Scut",
+  "@powerShieldName": {
+    "description": "Name of the shield power"
+  },
+  "powerShieldDesc": "Blochează o ratare — un balon scăpat nu îți ia viață",
+  "@powerShieldDesc": {
+    "description": "Description of the shield power"
+  },
+  "powerOwnedCount": "Ai: {count}",
+  "@powerOwnedCount": {
+    "description": "How many of a given power the player owns",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "powerActivated": "{name} activat!",
+  "@powerActivated": {
+    "description": "Snackbar when a power is activated in-game",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Bombă"
+      }
+    }
+  },
+  "powerNoneLeft": "Nu mai ai {name}. Cumpără din magazin.",
+  "@powerNoneLeft": {
+    "description": "Snackbar when the player taps an empty power",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Bombă"
+      }
+    }
+  },
+  "shieldActive": "🛡 Scut activ",
+  "@shieldActive": {
+    "description": "Overlay badge shown while the shield power is active"
+  },
+  "buyAction": "Cumpără",
+  "@buyAction": {
+    "description": "Generic buy button label"
   }
 }

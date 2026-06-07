@@ -36,7 +36,7 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get lifeRegenHint =>
-      'O viață revine la fiecare 3 minute în timpul jocului.';
+      'Viețile se refac singure, câte una la fiecare 15 minute.';
 
   @override
   String get playAgain => 'Joc nou';
@@ -228,4 +228,92 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get notificationBody => 'Sparge niște bule și relaxează-te! 🫧';
+
+  @override
+  String get livesFull => 'Vieți pline';
+
+  @override
+  String nextLifeIn(String time) {
+    return 'Următoarea viață în $time';
+  }
+
+  @override
+  String get outOfLivesTitle => 'Nu mai ai vieți';
+
+  @override
+  String get outOfLivesBody =>
+      'Așteaptă refacerea lor, vezi o reclamă sau folosește monede.';
+
+  @override
+  String get watchAdLife => '+1 viață (reclamă)';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 viață ($coins 🪙)';
+  }
+
+  @override
+  String get waitButton => 'Aștept';
+
+  @override
+  String get notEnoughCoins => 'Nu ai destule monede';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return 'Vezi o reclamă → $coins monede';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins monede!';
+  }
+
+  @override
+  String get powersTitle => 'PUTERI';
+
+  @override
+  String get powerBombName => 'Bombă';
+
+  @override
+  String get powerBombDesc => 'Sparge toate baloanele de pe ecran';
+
+  @override
+  String get powerFreezeName => 'Înghețare';
+
+  @override
+  String get powerFreezeDesc => 'Oprește baloanele 5 secunde';
+
+  @override
+  String get powerSlowName => 'Încetinitor';
+
+  @override
+  String get powerSlowDesc => 'Baloanele urcă cu jumătate de viteză 10 secunde';
+
+  @override
+  String get powerShieldName => 'Scut';
+
+  @override
+  String get powerShieldDesc =>
+      'Blochează o ratare — un balon scăpat nu îți ia viață';
+
+  @override
+  String powerOwnedCount(int count) {
+    return 'Ai: $count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name activat!';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return 'Nu mai ai $name. Cumpără din magazin.';
+  }
+
+  @override
+  String get shieldActive => '🛡 Scut activ';
+
+  @override
+  String get buyAction => 'Cumpără';
 }

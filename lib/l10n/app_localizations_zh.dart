@@ -35,7 +35,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get newRecord => '🏆 新纪录！';
 
   @override
-  String get lifeRegenHint => '游戏时每 3 分钟恢复一条生命。';
+  String get lifeRegenHint => '生命会自动恢复，每15分钟恢复一个。';
 
   @override
   String get playAgain => '再玩一局';
@@ -225,4 +225,90 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notificationBody => '戳几个泡泡，放松一下吧！🫧';
+
+  @override
+  String get livesFull => '生命已满';
+
+  @override
+  String nextLifeIn(String time) {
+    return '下一个生命还需 $time';
+  }
+
+  @override
+  String get outOfLivesTitle => '没有生命了';
+
+  @override
+  String get outOfLivesBody => '等待恢复、观看广告或使用金币。';
+
+  @override
+  String get watchAdLife => '+1 生命（广告）';
+
+  @override
+  String coinsLife(int coins) {
+    return '+1 生命（$coins 🪙）';
+  }
+
+  @override
+  String get waitButton => '等待';
+
+  @override
+  String get notEnoughCoins => '金币不足';
+
+  @override
+  String watchAdForCoins(int coins) {
+    return '观看广告 → $coins 金币';
+  }
+
+  @override
+  String coinsEarned(int coins) {
+    return '+$coins 金币！';
+  }
+
+  @override
+  String get powersTitle => '道具';
+
+  @override
+  String get powerBombName => '炸弹';
+
+  @override
+  String get powerBombDesc => '炸破屏幕上所有泡泡';
+
+  @override
+  String get powerFreezeName => '冰冻';
+
+  @override
+  String get powerFreezeDesc => '让泡泡静止５秒';
+
+  @override
+  String get powerSlowName => '慢动作';
+
+  @override
+  String get powerSlowDesc => '泡泡以一半速度上升１０秒';
+
+  @override
+  String get powerShieldName => '护盾';
+
+  @override
+  String get powerShieldDesc => '抵挡一次失误：漏掉的泡泡不会扣生命';
+
+  @override
+  String powerOwnedCount(int count) {
+    return '拥有：$count';
+  }
+
+  @override
+  String powerActivated(String name) {
+    return '$name 已启动！';
+  }
+
+  @override
+  String powerNoneLeft(String name) {
+    return '没有$name了，去商店购买。';
+  }
+
+  @override
+  String get shieldActive => '🛡 护盾生效';
+
+  @override
+  String get buyAction => '购买';
 }
