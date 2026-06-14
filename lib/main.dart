@@ -6,6 +6,7 @@ import 'services/review_service.dart';
 import 'screens/home_screen.dart';
 import 'services/ads_service.dart';
 import 'services/purchase_service.dart';
+import 'services/tracking_service.dart';
 import 'services/locale_controller.dart';
 import 'widgets/remove_ads_offer.dart';
 
@@ -15,7 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleController.instance.load();
   await PurchaseService.instance.initialize();
-  await AdsService.instance.initialize();
+  // Ads are initialised after the ATT prompt (see initState below), so tracking
+  // permission is requested before any tracking data is collected.
   ReviewService.instance.registerLaunch();
   NotificationService.instance.scheduleDailyReminderLocalized();
   runApp(const BubblePopApp());
@@ -35,6 +37,12 @@ class _BubblePopAppState extends State<BubblePopApp> with WidgetsBindingObserver
     WidgetsBinding.instance.addObserver(this);
     // Show the upsell right after a full-screen ad (App Open / interstitial) closes.
     AdsService.instance.adClosedTick.addListener(_onAdClosed);
+    // Ask for tracking permission first, THEN initialise ads — so the ATT
+    // prompt appears before any tracking data is collected.
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await TrackingService.requestIfNeeded();
+      await AdsService.instance.initialize();
+    });
   }
 
   @override

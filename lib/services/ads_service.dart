@@ -38,8 +38,17 @@ class AdsService {
   bool _appOpenLoading = false;
   DateTime? _appOpenLoadTime;
   bool _showingFullScreenAd = false;
-  DateTime _lastInterstitialAt = DateTime.fromMillisecondsSinceEpoch(0);
-  static const Duration _interstitialCooldown = Duration(seconds: 15);
+
+  // Single global gate across ALL full-screen ads (interstitial, app-open,
+  // rewarded). After any full-screen ad is shown we refuse to show another one
+  // for [_globalAdCooldown]. This is what stops the "multiple consecutive ads"
+  // experience Apple flagged (e.g. game-over interstitial immediately followed
+  // by an app-open on resume).
+  DateTime _lastFullScreenAt = DateTime.fromMillisecondsSinceEpoch(0);
+  static const Duration _globalAdCooldown = Duration(seconds: 60);
+  bool get _recentlyShowedFullScreen =>
+      DateTime.now().difference(_lastFullScreenAt) < _globalAdCooldown;
+  void _markFullScreenShown() => _lastFullScreenAt = DateTime.now();
 
   /// Bumped whenever a full-screen ad (App Open or interstitial) closes, so the
   /// UI can offer the "Remove ads" upsell right after.
@@ -105,6 +114,8 @@ class AdsService {
   Future<void> showAppOpenIfReady() async {
     if (!_initialized || PurchaseService.instance.noAds) return;
     if (_showingFullScreenAd) return;
+    // Don't stack an app-open right after another full-screen ad.
+    if (_recentlyShowedFullScreen) return;
     if (!_appOpenValid) {
       loadAppOpen();
       return;
@@ -112,6 +123,7 @@ class AdsService {
     final ad = _appOpen!;
     _appOpen = null;
     _showingFullScreenAd = true;
+    _markFullScreenShown();
     ad.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (a) {
         a.dispose();
@@ -194,14 +206,15 @@ class AdsService {
   void maybeShowInterstitial({VoidCallback? onShown, VoidCallback? onDismissed}) {
     if (!_initialized) return;
     if (PurchaseService.instance.noAds) return;
+    // Never stack on top of, or right after, another full-screen ad.
+    if (_showingFullScreenAd || _recentlyShowedFullScreen) return;
     final ad = _interstitial;
     if (ad == null) {
       _loadInterstitial();
       return;
     }
-    if (DateTime.now().difference(_lastInterstitialAt) < _interstitialCooldown) return;
-    _lastInterstitialAt = DateTime.now();
     _showingFullScreenAd = true;
+    _markFullScreenShown();
     ad.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (a) {
         a.dispose();
@@ -228,6 +241,8 @@ class AdsService {
 
   Future<bool> showRewarded() async {
     if (!_initialized) return false;
+    // Don't overlap another full-screen ad that is already on screen.
+    if (_showingFullScreenAd) return false;
     // Try to load on demand (and wait) instead of failing instantly.
     await _ensureRewarded();
     final ad = _rewarded;
@@ -237,6 +252,8 @@ class AdsService {
     }
     final completer = Completer<bool>();
     _showingFullScreenAd = true;
+    // Mark so an automatic interstitial/app-open won't fire right after.
+    _markFullScreenShown();
     ad.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (a) {
         a.dispose();
