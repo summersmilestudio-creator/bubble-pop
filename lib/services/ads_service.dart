@@ -218,15 +218,28 @@ class AdsService {
   /// pune jocul pe pauză); [onDismissed] la închiderea/eșecul reclamei
   /// (ca să reia jocul). Dacă reclama nu se afișează (cooldown, neîncărcată,
   /// noAds), niciun callback nu e apelat și jocul continuă normal.
-  void maybeShowInterstitial({VoidCallback? onShown, VoidCallback? onDismissed}) {
-    if (!_initialized) return;
-    if (PurchaseService.instance.noAds) return;
-    // Never stack on top of, or right after, another full-screen ad.
-    if (_showingFullScreenAd || _recentlyShowedFullScreen) return;
+  ///
+  /// [bypassCooldown] ignoră cooldown-ul global de 45s — folosit pentru
+  /// reclama periodică de gameplay (la fiecare 20 de baloane sparte), care
+  /// trebuie să apară de fiecare dată, nu doar prima oară. Chiar și așa, nu se
+  /// suprapune NICIODATĂ peste o altă reclamă full-screen care e deja pe ecran.
+  ///
+  /// Returnează `true` dacă reclama chiar a început să se afișeze, `false`
+  /// altfel (neîncărcată, noAds, suprapunere) — apelantul poate reîncerca.
+  bool maybeShowInterstitial(
+      {VoidCallback? onShown,
+      VoidCallback? onDismissed,
+      bool bypassCooldown = false}) {
+    if (!_initialized) return false;
+    if (PurchaseService.instance.noAds) return false;
+    // Never stack on top of another full-screen ad that's already showing.
+    if (_showingFullScreenAd) return false;
+    // Respectă cooldown-ul global doar dacă nu e cerut bypass explicit.
+    if (!bypassCooldown && _recentlyShowedFullScreen) return false;
     final ad = _interstitial;
     if (ad == null) {
       _loadInterstitial();
-      return;
+      return false;
     }
     _showingFullScreenAd = true;
     _markFullScreenShown();
@@ -252,6 +265,7 @@ class AdsService {
     onShown?.call();
     ad.show();
     _interstitial = null;
+    return true;
   }
 
   Future<bool> showRewarded() async {

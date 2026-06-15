@@ -11,6 +11,7 @@ import '../services/powers_service.dart';
 import '../services/rewards_service.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../widgets/game_juice.dart';
+import '../widgets/remove_ads_offer.dart';
 import 'achievements_screen.dart' show achievementTitle;
 
 const _bubbleColors = [
@@ -511,16 +512,31 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     AchievementsService.instance.recordPop(currentCombo: _comboCount).then(_showUnlockToasts);
     _popsSinceAd++;
     if (_popsSinceAd >= _popsPerAd) {
-      _popsSinceAd = 0;
-      AdsService.instance.maybeShowInterstitial(
+      // Reclama full-screen la FIECARE 20 de baloane (nu doar primele 20).
+      // bypassCooldown: true → ignoră cooldown-ul global de 45s, ca reclama să
+      // apară de fiecare dată. Contorul se resetează DOAR dacă reclama chiar
+      // s-a afișat; dacă nu era încărcată, rămâne ridicat și reîncearcă la
+      // următorul balon spart.
+      final shown = AdsService.instance.maybeShowInterstitial(
+        bypassCooldown: true,
         onShown: () {
           if (mounted) setState(() => _adPaused = true);
         },
-        onDismissed: () {
-          if (mounted) setState(() => _adPaused = false);
-        },
+        onDismissed: _onInterstitialDismissed,
       );
+      if (shown) _popsSinceAd = 0;
     }
+  }
+
+  /// La închiderea reclamei periodice: ținem jocul pe pauză cât timp e afișat
+  /// cartonașul „Scapă de reclame", ca baloanele să nu urce în spatele lui și
+  /// să consume vieți, apoi reluăm jocul.
+  Future<void> _onInterstitialDismissed() async {
+    final ctx = context;
+    if (mounted) {
+      await RemoveAdsOffer.maybeShow(ctx);
+    }
+    if (mounted) setState(() => _adPaused = false);
   }
 
   @override
