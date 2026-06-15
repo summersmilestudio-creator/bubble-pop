@@ -181,7 +181,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   Future<void> _onRewardedRefillLives() async {
     if (_refillBusy || !_running) return;
     setState(() => _refillBusy = true);
-    final earned = await AdsService.instance.showRewarded();
+    final earned = await AdsService.instance.showBonusAd();
     if (!mounted) return;
     setState(() {
       _refillBusy = false;
@@ -322,7 +322,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                 onPressed: () async {
                   if (busy) return;
                   setLocal(() => busy = true);
-                  final earned = await AdsService.instance.showRewarded();
+                  final earned = await AdsService.instance.showBonusAd();
                   if (earned) {
                     await _livesSvc.add(1);
                     if (c.mounted) Navigator.pop(c);
@@ -381,7 +381,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                   ? null
                   : () async {
                       setLocal(() => _reviveBusy = true);
-                      final earned = await AdsService.instance.showRewarded();
+                      final earned = await AdsService.instance.showBonusAd();
                       _reviveBusy = false;
                       if (!c.mounted) return;
                       if (earned) {

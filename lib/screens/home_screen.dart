@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Future<void> _watchAdForCoins() async {
     if (_adBusy) return;
     setState(() => _adBusy = true);
-    final earned = await AdsService.instance.showRewarded();
+    final earned = await AdsService.instance.showBonusAd();
     if (!mounted) return;
     if (earned) {
       await _rewards.addCoins(kAdCoinReward);
